@@ -143,7 +143,7 @@ const App = () => {
           <div className="photo-wrapper" style={{ backgroundImage: `url(${photo})` }}>
             <div className="video-overlay">
               <video className="video-overlay-content" autoPlay loop muted>
-                <source src={process.env.PUBLIC_URL + "/img/animacion12.mp4"} type="video/mp4" />
+                <source src={process.env.PUBLIC_URL + "/img/animacion13.mp4"} type="video/mp4" />
               </video>
             </div>
             {showCerebro && (
