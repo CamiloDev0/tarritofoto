@@ -44,7 +44,7 @@ const App = () => {
     if (currentScreen === 2) {
       const timer = setTimeout(() => {
         setShowConteoGif(true);
-      }, 6400); //6400//
+      }, 10000); //6400//
 
       const photoTimer = setTimeout(() => {
         takePhoto();
@@ -134,7 +134,8 @@ const App = () => {
               <img src={process.env.PUBLIC_URL + "/img/conteo.gif"} alt="Conteo" style={{ width: "570px" }} />
             </div>
           )}
-          <video ref={videoRef} autoPlay muted></video>
+          <video ref={videoRef} autoPla muted style={{ transform: 'scaleX(-1)'}}></video>  
+          
         </div>
       )}
 
