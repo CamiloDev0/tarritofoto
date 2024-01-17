@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./index.css";
+import { getClicks, saveClicks } from "./helpers/saveLocaldtorage";
 
 const App = () => {
   const [currentScreen, setCurrentScreen] = useState(1);
@@ -10,6 +11,8 @@ const App = () => {
   const [showFlash, setShowFlash] = useState(false);
   const [enterPressed, setEnterPressed] = useState(false);
   const videoRef = useRef(null);
+
+
 
   useEffect(() => {
     const startCamera = async () => {
@@ -30,6 +33,9 @@ const App = () => {
         if (currentScreen === 1) {
           setCurrentScreen(2);
           setEnterPressed(true);
+          const numero = parseInt(getClicks(), 10);
+          saveClicks((numero + 1));
+          
         }
       }
     };
@@ -121,6 +127,7 @@ const App = () => {
 
       {currentScreen === 2 && (
         <div className="screen photo-screen">
+        <audio src="audio/audio.mp3" loop controls autoPlay style={{zIndex:0}}/>
           <div className="silueta">
             <img src={process.env.PUBLIC_URL + "/img/silueta.png"} alt="Silueta" />
           </div>
@@ -134,13 +141,13 @@ const App = () => {
               <img src={process.env.PUBLIC_URL + "/img/conteo.gif"} alt="Conteo" style={{ width: "570px" }} />
             </div>
           )}
-          <video ref={videoRef} autoPla muted style={{ transform: 'scaleX(-1)'}}></video>  
-          
+          <video ref={videoRef} autoPla muted style={{ transform: 'scaleX(-1)'}}></video>      
         </div>
       )}
 
       {currentScreen === 3 && photo && (
         <div className="screen photo-preview">
+        <audio src="audio/audio.mp3" loop controls autoPlay style={{zIndex:0}}/>
           <div className="photo-wrapper" style={{ backgroundImage: `url(${photo})` }}>
             <div className="video-overlay">
               <video className="video-overlay-content" autoPlay loop muted>
@@ -159,10 +166,11 @@ const App = () => {
 
       {currentScreen === 4 && photo && (
         <div className="screen photo-preview">
+        <audio src="audio/audio.mp3" loop controls autoPlay style={{zIndex:0}}/>
           <div className="photo-wrapper" style={{ backgroundImage: `url(${photo})` }}>
           </div>
           <div className="gafas">
-            <img src={process.env.PUBLIC_URL + "/img/gafas.png"} alt="Gafas" />
+            <img src={process.env.PUBLIC_URL + "/img/gafas.png"} alt="Gafas"   />
           </div>
           <div className="gafas-luz">
             <img src={process.env.PUBLIC_URL + "/img/gafasluz.png"} alt="Gafasluz" />
@@ -188,6 +196,7 @@ const App = () => {
         </div>
       )}
     </div>
+    
   );
 };
 
