@@ -50,7 +50,7 @@ const App = () => {
     if (currentScreen === 2) {
       const timer = setTimeout(() => {
         setShowConteoGif(true);
-      }, 10000); //6400//
+      }, 6400); //6400//
 
       const photoTimer = setTimeout(() => {
         takePhoto();
@@ -127,22 +127,22 @@ const App = () => {
 
       {currentScreen === 2 && (
         <div className="screen photo-screen">
-        <audio src="audio/audio.mp3" loop controls autoPlay style={{zIndex:0}}/>
-          <div className="silueta">
-            <img src={process.env.PUBLIC_URL + "/img/silueta.png"} alt="Silueta" />
-          </div>
-          {!showConteoGif && (
-            <div className="area">
-              <img src={process.env.PUBLIC_URL + "/img/area.png"} alt="Área" />
-            </div>
-          )}
-          {showConteoGif && (
-            <div className="conteo-gif">
-              <img src={process.env.PUBLIC_URL + "/img/conteo.gif"} alt="Conteo" style={{ width: "570px" }} />
-            </div>
-          )}
-          <video ref={videoRef} autoPla muted style={{ transform: 'scaleX(-1)'}}></video>      
+        <div className="silueta">
+          <img src={process.env.PUBLIC_URL + "/img/silueta.png"} alt="Silueta" />
         </div>
+        {showConteoGif ? (
+          <div className="conteo-gif">
+            <img src={process.env.PUBLIC_URL + "/img/conteo.gif"} alt="Conteo" style={{ width: "570px" }} />
+          </div>
+        ) :
+        <div className="area">
+        <img src={process.env.PUBLIC_URL + "/img/area.png"} alt="Área" />
+        </div>
+        }
+        <video ref={videoRef} autoPla muted style={{ transform: 'scaleX(-1)'}}></video> 
+        <audio src="audio/audio.mp3" loop controls autoPlay style={{zIndex:0}}/>     
+      </div>
+      
       )}
 
       {currentScreen === 3 && photo && (
